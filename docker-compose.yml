@@ -1,8 +1,8 @@
 services:
   app:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - .:/app
-    command: ["pytest", "--maxfail=1", "--disable-warnings", "-v"]
+      - .:/home/devuser/app
+    command: [ "pytest", "--maxfail=1", "--disable-warnings", "-v" ]
