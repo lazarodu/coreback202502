@@ -11,3 +11,5 @@ class User(Base):
     name = Column(String, index=True)
     email = Column(String, unique=True, index=True)
     password = Column(String)
+
+    vinyl_records = relationship("VinylRecord", back_populates="owner")
