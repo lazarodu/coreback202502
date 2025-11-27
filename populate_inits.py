@@ -3,7 +3,7 @@ import os
 # Diretório raiz onde os pacotes estão (ex: 'domain')
 # Você pode adicionar 'tests' aqui se também quiser popular os inits de lá.
 # Ajuste 'START_DIR' se sua estrutura for 'src/domain'.
-START_DIR = "core"
+START_DIR = "api"
 
 
 def populate_init_files(basedir):
