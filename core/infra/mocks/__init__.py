@@ -1,3 +1,3 @@
-from .mock_user_repository import MockUserRepository
 from .mock_loan_repository import MockLoanRepository
 from .mock_vinyl_record_repository import MockVinylRecordRepository
+from .mock_user_repository import MockUserRepository
