@@ -3,15 +3,15 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.factories.use_case_factory import UseCaseFactory
 from api.database import get_db
+from core.domain.entities import User
+from core.factories.use_case_factory import UseCaseFactory
 from core.infra.sqlalchemy import (
     LoanRepository,
     UserRepository,
     VinylRecordRepository,
 )
-from core.domain.entities import User
-from api.security import ALGORITHM, SECRET_KEY
+from core.security import ALGORITHM, SECRET_KEY
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/token", scheme_name="JWT")
 

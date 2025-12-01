@@ -1,4 +1,5 @@
 from typing import List, Optional
+
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
@@ -57,7 +58,7 @@ class LoanRepository(ILoanRepository):
         result = await self.session.execute(
             select(LoanModel)
             .where(LoanModel.vinyl_record_id == vinyl_record_id)
-            .where(LoanModel.return_date == None)
+            .where(LoanModel.return_date is None)
         )
         loan_model = result.scalar_one_or_none()
         if loan_model:

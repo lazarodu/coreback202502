@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException
+
+from api.dependencies import get_use_case_factory
 from api.schemas.user_schemas import UserCreate, UserResponse
 from core.factories.use_case_factory import UseCaseFactory
-from api.dependencies import get_use_case_factory
 
-router = APIRouter()
+user_router = APIRouter()
 
 
-@router.post("/users")
+@user_router.post("/users")
 async def create_user(
     user: UserCreate, factory: UseCaseFactory = Depends(get_use_case_factory)
 ):

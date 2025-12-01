@@ -1,5 +1,7 @@
 import uuid
 
+from core.security import get_password_hash
+
 from ..entities import User
 from ..repositories import IUserRepository
 from ..value_objects import Email, Name, Password
@@ -13,8 +15,9 @@ class RegisterUser:
         user_exists = await self.user_repository.find_by_email(email)
         if user_exists:
             raise ValueError("User already exists")
+        (Password(password),)
 
-        hashed_password = self._hash_password(password)
+        hashed_password = get_password_hash(password)
 
         user = User(
             id=str(uuid.uuid4()),
@@ -25,6 +28,3 @@ class RegisterUser:
 
         await self.user_repository.save(user)
         return user
-
-    def _hash_password(self, password: str) -> str:
-        return f"hashed_{password}"

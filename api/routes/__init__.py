@@ -1,1 +1,2 @@
-from .user_router import router as user_router
+from .auth_router import auth_router
+from .user_router import user_router

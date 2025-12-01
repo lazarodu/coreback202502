@@ -1,6 +1,10 @@
+from core.domain.use_cases import BorrowVinylRecord, RegisterUser
 from core.factories.use_case_factory import UseCaseFactory
-from core.domain.use_cases import RegisterUser, BorrowVinylRecord
-from core.infra.mocks import MockUserRepository, MockLoanRepository, MockVinylRecordRepository
+from core.infra.mocks import (
+    MockLoanRepository,
+    MockUserRepository,
+    MockVinylRecordRepository,
+)
 
 
 def test_should_create_use_case_with_internal_mocks():
@@ -27,4 +31,6 @@ def test_should_create_use_case_with_external_mocks():
     assert borrow_use_case.user_repository is user_repo
     assert borrow_use_case.loan_repository is loan_repo
     # Check that the non-provided repo is a new mock instance
-    assert isinstance(borrow_use_case.vinyl_record_repository, MockVinylRecordRepository)
+    assert isinstance(
+        borrow_use_case.vinyl_record_repository, MockVinylRecordRepository
+    )

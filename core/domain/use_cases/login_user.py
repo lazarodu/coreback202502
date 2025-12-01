@@ -1,3 +1,5 @@
+from core.security import verify_password
+
 from ..entities import User
 from ..repositories import IUserRepository
 
@@ -12,10 +14,7 @@ class LoginUser:
         if not user:
             raise ValueError("Invalid credentials")
 
-        if not self._compare_password(password, user.password.value):
+        if not verify_password(password, user.password.value):
             raise ValueError("Invalid credentials")
 
         return user
-
-    def _compare_password(self, password: str, hashed_password: str) -> bool:
-        return f"hashed_{password}" == hashed_password
