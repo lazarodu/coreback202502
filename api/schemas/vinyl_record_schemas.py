@@ -25,7 +25,8 @@ class VinylRecordResponse(BaseModel):
     year: int
     number_of_tracks: int
     photo_url: str
-    user_id: Optional[str] = None
+    user_id: str | None
+    user: Optional[str] = None
 
     class Config:
         from_attributes = True
@@ -51,4 +52,5 @@ class VinylRecordResponse(BaseModel):
             "number_of_tracks": v.number_of_tracks,
             # Flatten nested photo.url to photo_url (Fixes Error 3)
             "photo_url": v.photo.url if v.photo else None,
+            "user_id": v.user_id,
         }

@@ -37,6 +37,7 @@ async def create_vinyl_record(
 async def get_vinyl_record(factory: UseCaseFactory = Depends(get_use_case_factory)):
     find_all_vinyl_use_case = factory.create_find_all_vinyl_record()
     vinyl_record = await find_all_vinyl_use_case.execute()
+    print(vinyl_record)
     return vinyl_record
 
 
