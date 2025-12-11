@@ -11,3 +11,4 @@ from .register_vinyl_record import RegisterVinylRecord
 from .return_vinyl_record import ReturnVinylRecord
 from .update_user import UpdateUser
 from .update_vinyl_record import UpdateVinylRecord
+from .find_loan import FindLoan

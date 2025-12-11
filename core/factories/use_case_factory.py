@@ -19,6 +19,7 @@ from core.domain.use_cases import (
     ReturnVinylRecord,
     UpdateUser,
     UpdateVinylRecord,
+    FindLoan,
 )
 from core.infra.mocks import (
     MockLoanRepository,
@@ -82,3 +83,6 @@ class UseCaseFactory:
 
     def create_return_vinyl_record(self) -> ReturnVinylRecord:
         return ReturnVinylRecord(loan_repository=self.loan_repository)
+
+    def create_find_loan(self) -> FindLoan:
+        return FindLoan(loan_repository=self.loan_repository)

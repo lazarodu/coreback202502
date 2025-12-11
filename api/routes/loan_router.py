@@ -31,7 +31,7 @@ async def return_loan(
 ):
     try:
         find_loan_use_case = factory.create_find_loan()
-        loan = await find_loan_use_case.execute(id=loan_id)
+        loan = await find_loan_use_case.execute(loan_id=loan_id)
         if loan.user_id != current_user.id:
             raise HTTPException(
                 status_code=403, detail="Not authorized to return this vinyl record"
