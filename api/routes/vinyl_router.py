@@ -41,21 +41,21 @@ async def get_vinyl_record(factory: UseCaseFactory = Depends(get_use_case_factor
     return vinyl_record
 
 
-@vinyl_router.put("/vinyl-records", response_model=VinylRecordResponse)
+@vinyl_router.put("/vinyl-records/{vinyl_id}", response_model=VinylRecordResponse)
 async def update_vinyl_record(
-    id: str,
+    vinyl_id: str,
     vinyl: VinylRecordUpdate,
     factory: UseCaseFactory = Depends(get_use_case_factory),
     current_user: User = Depends(get_current_user),
 ):
     try:
         find_vinyl_use_case = factory.create_find_vinyl_record()
-        record = await find_vinyl_use_case.execute(id=id)
+        record = await find_vinyl_use_case.execute(id=vinyl_id)
         if record.user_id != current_user.id:
             raise HTTPException(status_code=403, detail="Não autorizado!!!")
         update_vinyl_use_case = factory.create_update_vinyl_record()
         update_record = await update_vinyl_use_case.execute(
-            id=id,
+            id=vinyl_id,
             band=vinyl.band,
             album=vinyl.album,
             year=vinyl.year,
